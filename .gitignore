@@ -31,3 +31,85 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+
+# === Android-specific ===
+
+# APKs / AABs
+*.apk
+*.ap_
+*.aab
+
+# Dalvik / ART bytecode
+*.dex
+
+# Java / Kotlin class files
+*.class
+
+# Generated folders
+bin/
+gen/
+out/
+*/build/
+**/build/
+
+# Local configuration
+local.properties
+
+# Logs
+*.log
+
+# Keystore files (keep secure!)
+*.jks
+*.keystore
+
+# IntelliJ / Android Studio
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Gradle
+.gradle/
+build/
+
+# Navigation editor temp files
+.navigation/
+
+# Captures and screenshots
+captures/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Firebase & Google Sign-In ===
+
+# Contains API keys — do NOT commit
+google-services.json
+GoogleService-Info.plist
+
+# Firebase crash logs / analytics (optional)
+firebase-crashlytics/
+
+# === SQLite ===
+
+# Local DB files used by the app or emulator
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# === Misc ===
+
+# Swap / temp files
+*.swp
+*.swo
+*.tmp
+
+# JetBrains IDE settings (optional)
+.idea/*
+!.idea/gradle.xml
+!.idea/modules.xml
+!.idea/workspace.xml
