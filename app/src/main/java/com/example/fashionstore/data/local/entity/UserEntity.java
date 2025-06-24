@@ -32,4 +32,5 @@ public class UserEntity {
         this.password = password;
         username = usn;
     }
+    public UserEntity() {}
 }
