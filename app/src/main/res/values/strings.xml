@@ -14,4 +14,8 @@
     <string name="register_button">Register</string>
     <string name="go_to_login">Already have an account? Login</string>
 
+    <string name="forgot_password_title">Forgot Password</string>
+    <string name="send_reset_button">Send Reset Email</string>
+    <string name="back_to_login">Back to Login</string>
+
 </resources>
