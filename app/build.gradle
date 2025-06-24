@@ -26,10 +26,30 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+    sourceSets {
+        main {
+            java {
+                srcDirs 'src\\main\\java', 'src\\main\\java\\cam\\example\\fashionstore\\service', 'src\\main\\java\\com\\example\\fashionstore\\service', 'src\\main\\java\\com\\example\\fashionstore\\service\\customer'
+            }
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/NOTICE.md'
+        exclude 'META-INF/LICENSE.md'
+    }
 }
 
 dependencies {
-
+//    compileOnly 'org.projectlombok:lombok:1.18.36'
+//    annotationProcessor 'org.projectlombok:lombok:1.18.36'
+    implementation "androidx.room:room-runtime:2.6.1"
+    annotationProcessor "androidx.room:room-compiler:2.6.1"
+    implementation 'com.squareup.picasso:picasso:2.8'
+//    androidTestImplementation "androidx.room:room-testing:2.6.1"
+    implementation 'com.sun.mail:android-mail:1.6.7'
+    implementation 'com.sun.mail:android-activation:1.6.7'
+//    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.google.code.gson:gson:2.10.1'
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity
