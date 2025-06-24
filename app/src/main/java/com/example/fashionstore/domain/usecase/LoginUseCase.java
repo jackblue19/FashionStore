@@ -1,5 +1,6 @@
 package com.example.fashionstore.domain.usecase;
 
+import com.example.fashionstore.domain.iRepository.callback.OnUserFetchedCallback;
 import com.example.fashionstore.domain.model.User;
 import com.example.fashionstore.domain.iRepository.IUserRepository;
 
@@ -10,11 +11,14 @@ public class LoginUseCase {
         this.repo = repo;
     }
 
-    public User login(String email, String password) {
-        User user = repo.getUserByEmail(email);
-        if (user != null && user.getPassword().equals(password)) {
-            return user;
-        }
-        return null;
+    public void login(String email, String password, OnUserFetchedCallback callback) {
+        repo.getUserByEmail(email, user -> {
+            if (user != null && user.getPassword().equals(password)) {
+                callback.onResult(user);
+            } else {
+                callback.onResult(null);
+            }
+        });
     }
+
 }

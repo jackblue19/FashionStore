@@ -44,20 +44,20 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            User user = loginViewModel.login(email, password);
-            if (user != null) {
-                SharedPrefManager.getInstance(this).saveUser(user);
-                Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, MainActivity.class));
-                finish();
-            } else {
-                Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show();
-            }
+            loginViewModel.login(email, password, user -> {
+                if (user != null) {
+                    SharedPrefManager.getInstance(this).saveUser(user);
+                    Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, MainActivity.class));
+                    finish();
+                } else {
+                    Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
+                }
+            });
         });
 
         goToRegister.setOnClickListener(v -> {
             startActivity(new Intent(this, RegisterActivity.class));
-            finish();
         });
     }
 }
