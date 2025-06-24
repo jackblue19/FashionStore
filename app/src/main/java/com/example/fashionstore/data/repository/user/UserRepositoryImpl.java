@@ -3,8 +3,10 @@ package com.example.fashionstore.data.repository.user;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import com.example.fashionstore.data.local.AppDatabase;
+import com.example.fashionstore.data.local.dao.UserDao;
 import com.example.fashionstore.data.local.entity.UserEntity;
 import com.example.fashionstore.domain.iRepository.IUserRepository;
 import com.example.fashionstore.domain.model.User;
@@ -23,11 +25,12 @@ public class UserRepositoryImpl implements IUserRepository {
     public void register(User user) {
         UserEntity entity = new UserEntity(
                 user.getFullName(),
-                user.getUserName(),
                 user.getEmail(),
-                user.getPassword()
+                user.getPassword(),
+                user.getUserName()
         );
         Executors.newSingleThreadExecutor().execute(() -> db.userDao().insertUser(entity));
+        Log.d("DEBUG_REGISTER", "Saved user: " + entity.email + " / " + entity.password);
     }
 
     @Override
@@ -35,7 +38,7 @@ public class UserRepositoryImpl implements IUserRepository {
         Executors.newSingleThreadExecutor().execute(() -> {
             UserEntity entity = db.userDao().getUserByEmail(email);
             User user = (entity != null)
-                    ? new User(entity.fullName, entity.username, entity.email, entity.password)
+                    ? new User(entity.fullName, entity.email, entity.password, entity.username)
                     : null;
             new Handler(Looper.getMainLooper()).post(() -> callback.onResult(user));
         });

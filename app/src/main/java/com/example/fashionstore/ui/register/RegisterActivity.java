@@ -37,9 +37,9 @@ public class RegisterActivity extends AppCompatActivity {
         registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
 
         btnRegister.setOnClickListener(v -> {
-            String username = edtFullname.getText().toString().trim();
             String fullname = edtFullname.getText().toString().trim();
             String email = edtEmail.getText().toString().trim();
+            String username = email;
             String password = edtPassword.getText().toString().trim();
             String confirm = edtConfirmPassword.getText().toString().trim();
 
